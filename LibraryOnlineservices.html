@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Library Management System</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f6f9;
+}
+
+/* NAVBAR */
+header{
+background:#1e3c72;
+color:white;
+padding:15px 40px;
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
+}
+
+header h2{
+display:inline;
+}
+
+nav{
+float:right;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:bold;
+cursor:pointer;
+}
+
+nav a:hover{
+text-decoration:underline;
+}
+
+/* SECTION */
+section{
+padding:100px 40px;
+min-height:100vh;
+display:none;
+}
+
+.active{
+display:block;
+}
+
+/* HERO */
+.hero{
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') center/cover;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:70px;
+font-weight:bold;
+margin-top:120px;
+letter-spacing:2px;
+}
+
+.hero p{
+font-size:24px;
+margin-top:15px;
+}
+
+button{
+padding:10px 20px;
+background:#ff9800;
+border:none;
+border-radius:5px;
+color:white;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#e68900;
+}
+
+input{
+width:100%;
+padding:8px;
+margin:8px 0;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+}
+
+/* ABOUT BOX */
+.about-box{
+background:white;
+padding:35px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
+line-height:1.8;
+margin-top:20px;
+}
+
+.about-box h2{
+color:#1e3c72;
+margin-bottom:10px;
+}
+
+.about-box p{
+margin-top:10px;
+font-size:16px;
+}
+
+/* CARDS */
+.cards{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+margin-top:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,.1);
+flex:1 1 250px;
+cursor:pointer;
+transition:.3s;
+text-align:center;
+}
+
+.card:hover{
+transform:translateY(-5px);
+background:#e3eaf5;
+}
+
+/* BOOK CARD */
+.book-card{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,.1);
+cursor:pointer;
+margin:10px 0;
+}
+
+.logout{
+background:red;
+float:right;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#1e3c72;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>📚 Online Library</h2>
+<nav>
+<a onclick="showSection('home')">Home</a>
+<a onclick="showSection('about')">About</a>
+<a onclick="showSection('services')">Services</a>
+<a onclick="showSection('categoriesPage')">Categories</a>
+<a onclick="showSection('auth')">Login</a>
+</nav>
+</header>
+
+<!-- HOME -->
+<section id="home" class="hero active">
+<h1>Online Library Management System</h1>
+<p>Front-End Development Project</p>
+<button onclick="showSection('auth')">Get Started</button>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+
+<div class="about-box">
+
+<h2>About Our Library</h2>
+
+<p>
+The Online Library Management System is designed to help users explore,
+search, and manage digital books efficiently. It provides a simple
+and organized platform where readers can browse book categories and
+access learning resources easily.
+</p>
+
+<p>
+This system demonstrates essential front-end development concepts such
+as navigation, login authentication simulation, category-based book
+display, and dynamic content interaction using HTML, CSS, and JavaScript.
+</p>
+
+<h2 style="margin-top:25px;">Contact Information</h2>
+
+<p>
+<b>Email:</b> library@example.com<br>
+<b>Phone:</b> +91 9876543210
+</p>
+
+</div>
+
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="container">
+<h2>Services</h2>
+<div class="cards">
+<div class="card">Add Books</div>
+<div class="card">Search Books</div>
+<div class="card">View Categories</div>
+</div>
+</div>
+</section>
+
+<!-- LOGIN -->
+<section id="auth">
+<div class="container" style="max-width:400px">
+<h2>Login</h2>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<p style="margin-top:10px;">
+Don't have an account?
+<span style="color:blue;cursor:pointer;" onclick="showSection('signup')">Signup</span>
+</p>
+
+</div>
+</section>
+
+<!-- SIGNUP -->
+<section id="signup">
+<div class="container" style="max-width:400px">
+<h2>Signup</h2>
+<input type="text" id="newUsername" placeholder="Username">
+<input type="password" id="newPassword" placeholder="Password">
+<input type="password" id="confirmPassword" placeholder="Confirm Password">
+<button onclick="signup()">Create Account</button>
+
+<p style="margin-top:10px;">
+Already have an account?
+<span style="color:blue;cursor:pointer;" onclick="showSection('auth')">Login</span>
+</p>
+
+</div>
+</section>
+
+<!-- CATEGORIES + DASHBOARD -->
+<section id="categoriesPage">
+<div class="container">
+
+<h2>Library Dashboard</h2>
+<button class="logout" onclick="logout()">Logout</button>
+
+<h3>Book Categories</h3>
+
+<div class="cards">
+<div class="card" onclick="showCategoryBooks('programming')">📘 Programming</div>
+<div class="card" onclick="showCategoryBooks('science')">📗 Science</div>
+<div class="card" onclick="showCategoryBooks('literature')">📕 Literature</div>
+</div>
+
+<div id="categoryBooks" style="margin-top:40px;"></div>
+
+<h3 style="margin-top:30px;">Add New Book</h3>
+<input type="text" id="newBook" placeholder="Book Title">
+<button onclick="addBook()">Add Book</button>
+
+</div>
+</section>
+
+<footer>
+© 2026 Online Library | Front-End Project
+</footer>
+
+<script>
+
+function showSection(id){
+document.querySelectorAll("section").forEach(sec=>sec.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+window.scrollTo(0,0);
+}
+
+function signup(){
+let username=document.getElementById("newUsername").value.trim();
+let password=document.getElementById("newPassword").value.trim();
+let confirm=document.getElementById("confirmPassword").value.trim();
+
+if(password !== confirm){
+alert("Passwords do not match");
+return;
+}
+
+localStorage.setItem("libraryUser", JSON.stringify({username,password}));
+
+alert("Account Created Successfully! Please Login.");
+showSection("auth");
+}
+
+function login(){
+let username=document.getElementById("username").value.trim();
+let password=document.getElementById("password").value.trim();
+
+let savedUser = JSON.parse(localStorage.getItem("libraryUser"));
+
+if(savedUser && username === savedUser.username && password === savedUser.password){
+alert("Login Successful!");
+showSection("categoriesPage");
+}else{
+alert("Invalid Username or Password");
+}
+}
+
+function logout(){
+showSection("home");
+}
+
+let books={
+programming:["Java Programming","Python Crash Course","C++ Complete Guide"],
+science:["Physics Fundamentals","Chemistry 101"],
+literature:["Romeo & Juliet","Pride & Prejudice"]
+};
+
+function showCategoryBooks(category){
+let container = document.getElementById("categoryBooks");
+
+container.innerHTML="<h2>"+category.toUpperCase()+" BOOKS</h2>";
+
+books[category].forEach(book=>{
+container.innerHTML+=`<div class="book-card" onclick="showDetails('${book}')">${book}</div>`;
+});
+}
+
+function showDetails(title){
+alert("You selected: "+title);
+}
+
+function addBook(){
+let title=document.getElementById("newBook").value.trim();
+if(title===""){
+alert("Enter book name");
+return;
+}
+books.programming.push(title);
+alert("Book Added!");
+document.getElementById("newBook").value="";
+}
+
+</script>
+
+</body>
+</html>
